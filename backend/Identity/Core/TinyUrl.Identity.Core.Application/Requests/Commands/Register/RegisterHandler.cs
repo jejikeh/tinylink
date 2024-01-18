@@ -3,6 +3,7 @@ using TinyUrl.Identity.Core.Application.Common.Models.Configuration;
 using TinyUrl.Identity.Core.Application.Common.Models.Requests.Register;
 using TinyUrl.Identity.Core.Application.Common.Types;
 using TinyUrl.Identity.Core.Application.Services;
+using TinyUrl.Identity.Core.Application.Services.UserIdentity;
 using TinyUrl.Identity.Core.Domain;
 using TinyUrl.Identity.Core.Domain.Types;
 
@@ -11,7 +12,7 @@ namespace TinyUrl.Identity.Core.Application.Requests.Commands.Register;
 public class RegisterHandler(
         IIdentityApplicationConfiguration configuration,
         IUserRepository userRepository,
-        IIdentityNotificationService notificationService,
+        IAuthorizationNotificationService notificationService,
         ILoginTokenProvider loginTokenProvider
     ) : IHandler<RegisterRequest, RegisterSuccess, RegisterError>
 {

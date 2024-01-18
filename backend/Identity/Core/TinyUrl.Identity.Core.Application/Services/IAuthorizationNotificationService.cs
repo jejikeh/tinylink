@@ -4,7 +4,7 @@ using TinyUrl.Identity.Core.Domain.Types;
 
 namespace TinyUrl.Identity.Core.Application.Services;
 
-public interface IIdentityNotificationService
+public interface IAuthorizationNotificationService
 {
     public Task<Result<Success, IdentityNotificationError>> SendConfirmationEmailToUserAsync(
         User user, 

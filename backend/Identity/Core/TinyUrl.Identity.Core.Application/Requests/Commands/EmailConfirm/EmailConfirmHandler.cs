@@ -4,6 +4,7 @@ using TinyUrl.Identity.Core.Application.Common.Models.Requests.EmailConfirm;
 using TinyUrl.Identity.Core.Application.Common.Models.Requests.Login;
 using TinyUrl.Identity.Core.Application.Common.Types;
 using TinyUrl.Identity.Core.Application.Services;
+using TinyUrl.Identity.Core.Application.Services.UserIdentity;
 using TinyUrl.Identity.Core.Domain.Types;
 
 namespace TinyUrl.Identity.Core.Application.Requests.Commands.EmailConfirm;
