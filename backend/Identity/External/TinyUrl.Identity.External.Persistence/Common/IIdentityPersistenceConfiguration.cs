@@ -1,6 +1,8 @@
+using TinyUrl.Identity.External.Persistence.Common.Models.Configuration;
+
 namespace TinyUrl.Identity.External.Persistence.Common;
 
 public interface IIdentityPersistenceConfiguration
 {
-    public int RefreshTokenLifetime { get; }
+    public DatabaseConfiguration Database { get; }
 }

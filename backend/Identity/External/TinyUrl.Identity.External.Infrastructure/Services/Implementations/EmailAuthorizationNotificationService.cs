@@ -12,7 +12,7 @@ public class EmailAuthorizationNotificationService(
     IIdentityInfrastructureConfiguration configuration)
     : IAuthorizationNotificationService
 {
-    private readonly EmailConfiguration _emailConfiguration = configuration.EmailConfiguration;
+    private readonly EmailConfiguration _emailConfiguration = configuration.Email;
     
     public Task<Result<Success, NotificationError>> SendConfirmationEmailToUserAsync(User user, CancellationToken cancellationToken)
     {

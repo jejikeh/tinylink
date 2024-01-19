@@ -1,35 +1,35 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, computed, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-export type AuthUser = { id: string } | null | undefined;
-
-interface AuthState {
-  user: AuthUser;
-}
+import { Injectable, computed, inject, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // private auth = inject(AUTH_SERVICE?)
+  user: any = null;
+  http: HttpClient = inject(HttpClient);
 
-  // sources
-  private user$ = null;
+  constructor() {}
 
-  // state
-  private state = signal<AuthState>({
-    user: undefined,
-  });
+  loadUser() {
+    const request = this.http.get<any>('https://localhost:4201/api/user');
+    request.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
-  // selectors
-  user = computed(() => this.state().user);
-
-  constructor(private http: HttpClient) {}
-
-  loadUser() {}
-
-  login() {}
+  login(loginForm: any) {
+    return this.http
+      .post<any>('https://localhost:4201/api/login', loginForm, {
+        withCredentials: true,
+      })
+      .subscribe((_) => {});
+  }
 
   register() {}
+
+  logout() {
+    return this.http
+      .get<any>('https://localhost:4201/api/logout')
+      .subscribe((_) => (this.user = null));
+  }
 }

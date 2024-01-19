@@ -8,7 +8,7 @@ namespace TinyUrl.Identity.External.Infrastructure.Services.Implementations.Rsa;
 public class RsaKeyProvider(IIdentityInfrastructureConfiguration configuration) 
     : IRsaKeyProvider
 {
-    private readonly string _rsaKeyPath = configuration.RsaKeyConfiguration.RsaKeyPath;
+    private readonly string _rsaKeyPath = configuration.RsaKey.RsaKeyPath;
     
     public RSA CreateRsa()
     {

@@ -6,7 +6,7 @@ namespace TinyUrl.Identity.External.Infrastructure.Services;
 
 public class SmtpClientService(IIdentityInfrastructureConfiguration configuration) : SmtpClient
 {
-    private readonly EmailConfiguration _emailConfiguration = configuration.EmailConfiguration;
+    private readonly EmailConfiguration _emailConfiguration = configuration.Email;
 
     public void Connect()
     {

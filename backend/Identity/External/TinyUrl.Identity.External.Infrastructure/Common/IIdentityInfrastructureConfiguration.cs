@@ -4,7 +4,8 @@ namespace TinyUrl.Identity.External.Infrastructure.Common;
 
 public interface IIdentityInfrastructureConfiguration
 {
-    public EmailConfiguration EmailConfiguration { get; }
-    public RsaKeyConfiguration RsaKeyConfiguration { get; }
+    public EmailConfiguration Email { get; }
+    public RsaKeyConfiguration RsaKey { get; }
+    public TokensConfiguration Tokens { get; }
     public string UrlHost { get; }
 }

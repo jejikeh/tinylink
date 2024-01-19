@@ -3,19 +3,19 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using TinyUrl.Identity.Core.Domain;
 using TinyUrl.Identity.External.Infrastructure.Common;
-using TinyUrl.Identity.External.Infrastructure.Services.Interfaces;
 using TinyUrl.Identity.External.Infrastructure.Services.Interfaces.Rsa;
+using TinyUrl.Identity.External.Persistence.Services.Interfaces;
 
 namespace TinyUrl.Identity.External.Infrastructure.Services.Implementations;
 
 public class JsonWebTokenProvider(
     IIdentityInfrastructureConfiguration configuration, 
     IRsaKeyHolder rsaKeyHolder)
-    : IJsonWebTokenProvider
+    : IAccessTokenProvider
 {
     private readonly string _urlHost = configuration.UrlHost;
     
-    public string GenerateToken(User user)
+    public string GenerateAccessToken(User user)
     {
         var rsaKey = rsaKeyHolder.RsaSecurityKey ?? throw new InvalidOperationException("Rsa key not found");
         
