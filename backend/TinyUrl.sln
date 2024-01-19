@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{1C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyUrl.Identity.External.Infrastructure", "Identity\External\TinyUrl.Identity.External.Infrastructure\TinyUrl.Identity.External.Infrastructure.csproj", "{819AD7C6-73A9-4709-B6BE-0CBE1B694F36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyUrl.Identity.External.Persistence", "Identity\External\TinyUrl.Identity.External.Persistence\TinyUrl.Identity.External.Persistence.csproj", "{4F577370-1CB2-4A53-A607-AE6C7ECAF013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{819AD7C6-73A9-4709-B6BE-0CBE1B694F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{819AD7C6-73A9-4709-B6BE-0CBE1B694F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{819AD7C6-73A9-4709-B6BE-0CBE1B694F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F577370-1CB2-4A53-A607-AE6C7ECAF013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F577370-1CB2-4A53-A607-AE6C7ECAF013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F577370-1CB2-4A53-A607-AE6C7ECAF013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F577370-1CB2-4A53-A607-AE6C7ECAF013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F98188DA-F8DC-4441-992F-5D12F232B6C8} = {A231DB84-4E48-4C80-B1E0-6056B0A0F700}
@@ -43,5 +49,6 @@ Global
 		{2235ED6A-A8D2-4DD0-86CA-76F69A92C2F0} = {F98188DA-F8DC-4441-992F-5D12F232B6C8}
 		{1C4CD1B3-25FA-418F-B7DD-274806B6BC55} = {A231DB84-4E48-4C80-B1E0-6056B0A0F700}
 		{819AD7C6-73A9-4709-B6BE-0CBE1B694F36} = {1C4CD1B3-25FA-418F-B7DD-274806B6BC55}
+		{4F577370-1CB2-4A53-A607-AE6C7ECAF013} = {1C4CD1B3-25FA-418F-B7DD-274806B6BC55}
 	EndGlobalSection
 EndGlobal

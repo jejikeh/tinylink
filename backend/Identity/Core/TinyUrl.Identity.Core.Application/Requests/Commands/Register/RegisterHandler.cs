@@ -20,7 +20,7 @@ public class RegisterHandler(
     
     public async Task<Result<RegisterSuccess, RegisterError>> Handle(RegisterRequest request, CancellationToken cancellationToken)
     {
-        var createUserResult = await userRepository.CreateAsync(
+        var createUserResult = await userRepository.AddAsync(
             new User(request.Name, request.Email),
             cancellationToken);
 

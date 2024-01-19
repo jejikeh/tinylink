@@ -10,4 +10,8 @@ public interface IUserEmailService
         User user, 
         string token, 
         CancellationToken cancellationToken);
+
+    public Task<Result<string, UserEmailServiceError>> CreateConfirmationToken(
+        User user,
+        CancellationToken cancellationToken);
 }

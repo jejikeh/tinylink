@@ -10,11 +10,11 @@ public interface IUserRepository
         string email, 
         CancellationToken cancellationToken = default);
     
-    public Task<Result<User, UserRepositoryError>> CreateAsync(
+    public Task<Result<User, UserRepositoryError>> AddAsync(
         User user, 
         CancellationToken cancellationToken = default);
 
     public Task<Result<User, UserRepositoryError>> GetByIdAsync(
         Guid id,
-        CancellationToken cancellationToken);
+        CancellationToken cancellationToken = default);
 }

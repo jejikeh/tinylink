@@ -6,7 +6,7 @@ namespace TinyUrl.Identity.Core.Application.Services;
 
 public interface IAuthorizationNotificationService
 {
-    public Task<Result<Success, IdentityNotificationError>> SendConfirmationEmailToUserAsync(
+    public Task<Result<Success, NotificationError>> SendConfirmationEmailToUserAsync(
         User user, 
         CancellationToken cancellationToken);
 }
