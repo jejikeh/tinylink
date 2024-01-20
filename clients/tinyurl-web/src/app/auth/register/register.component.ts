@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'tinyurl-web-register',
+  selector: 'app-register',
   standalone: true,
-  imports: [CommonModule],
-  template: `<p>Register works!</p>`,
+  imports: [],
+  template: `
+    <p>
+      register works!
+    </p>
+  `,
+  styles: ``
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+
+}

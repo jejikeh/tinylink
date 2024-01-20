@@ -11,7 +11,7 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -41,6 +41,10 @@ api.MapPost("/login", (LoginForm loginForm) =>
 
 api.MapPost("/register", () => "Hello, world");
 api.MapGet("/logout", () => Results.SignOut(authenticationSchemes: ["Cookie"])).RequireAuthorization();
+api.MapPost("test", () => new
+{
+    Result = "Hello, world"
+});
 
 app.Run();
 

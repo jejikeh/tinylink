@@ -1,14 +1,16 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AppComponent } from './app.component';
+import { authRoutes } from './auth/auth.routes';
 
-export const appRoutes: Route[] = [
+export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
     path: 'home',
     component: HomeComponent,
   },
+  ...authRoutes,
 ];
