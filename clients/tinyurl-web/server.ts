@@ -20,40 +20,6 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // The internal backend api requests mapping
-  server.get('/api/**', (req, res) => {
-    axios
-      .get(host + req.path, req.body)
-      .then((data) => {
-        res.send(data.data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
-  });
-
-  server.post('/api/**', (req, res) => {
-    axios
-      .post(host + req.path, req.body)
-      .then((data) => {
-        res.send(data.data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
-  });
-
-  server.put('/api/**', (req, res) => {
-    axios
-      .put(host + req.path, req.body)
-      .then((data) => {
-        res.send(data.data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
-  });
-
   // Serve static files from /browser
   server.get(
     '*.*',

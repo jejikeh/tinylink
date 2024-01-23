@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, afterNextRender, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './auth/services/auth.service';
+import { environment } from '../environments/environment';
+import { platform } from 'os';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +45,7 @@ import { AuthService } from './auth/services/auth.service';
         </nav>
       </div>
       <div class="container">
-        <p>{{ test.result }}</p>
+        <p>{{ auth.user.id }}</p>
         <router-outlet></router-outlet>
       </div>
     </section>
@@ -51,12 +53,15 @@ import { AuthService } from './auth/services/auth.service';
 })
 export class AppComponent {
   auth: AuthService = inject(AuthService);
-
   test: any = 'test';
 
-  logout() {
-    this.auth.logout().subscribe((data) => {
-      this.test = data;
+  constructor() {
+    afterNextRender(() => {
+      this.auth.loadUser();
     });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

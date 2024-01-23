@@ -30,8 +30,8 @@ public class EmailConfirmHandler(
         }
 
         var decodedToken = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(request.Token));
-        var confirmEmailResult = await userEmailService.ConfirmEmailAsync(user, decodedToken, cancellationToken);
-        if (confirmEmailResult.IsError)
+        var tryConfirmEmail = await userEmailService.ConfirmEmailAsync(user, decodedToken, cancellationToken);
+        if (tryConfirmEmail.IsError)
         {
             return EmailConfirmError.InvalidToken();
         }

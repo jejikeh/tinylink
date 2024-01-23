@@ -2,7 +2,21 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using TinyUrl.Common.Models;
 
+var testLocalHostFrontend = "_testLocalHostFrontend";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(testLocalHostFrontend, policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddAuthentication("cookie")
     .AddCookie("cookie");
@@ -10,6 +24,8 @@ builder.Services.AddAuthentication("cookie")
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseCors(testLocalHostFrontend);
 
 // app.UseHttpsRedirection();
 app.UseAuthentication();
@@ -23,33 +39,32 @@ api.MapGet("/user", (ClaimsPrincipal user) =>
 });
 api.MapPost("/login", (LoginForm loginForm) =>
 {
-    Results.SignIn(
+    return Results.SignIn(
         new ClaimsPrincipal(
             new ClaimsIdentity(
                 new Claim[]
                 {
                     new Claim(Claims.Id, Guid.NewGuid().ToString()), 
-                    new Claim(Claims.Name, loginForm.Username),
-                }
+                    new Claim(Claims.Email, loginForm.Email),
+                    new Claim(Claims.Username, loginForm.Username)
+                },
+                "cookie"
             )),
         properties: new AuthenticationProperties()
         {
             IsPersistent = true
         },
-        authenticationScheme: "Cookie");
+        authenticationScheme: "cookie");
 });
 
 api.MapPost("/register", () => "Hello, world");
-api.MapGet("/logout", () => Results.SignOut(authenticationSchemes: ["Cookie"])).RequireAuthorization();
-api.MapPost("test", () => new
-{
-    Result = "Hello, world"
-});
+api.MapPost("/logout", () => Results.SignOut(authenticationSchemes: ["cookie"])).RequireAuthorization();
 
 app.Run();
 
 public class LoginForm
 {
-    public string Username { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
+    public string Username { get; set; } = string.Empty;
 }
